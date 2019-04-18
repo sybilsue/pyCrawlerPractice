@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import re
 import glob
 
-#解析url炖成soup
+#解析url炖成soup，获取一个专辑下的所有壁纸页
 def getPageUrl(url):
 #    url = 'http://172.16.14.69:8080/dbsearchplat/magazineList.action'
     html = requests.get(url).text
@@ -19,7 +19,7 @@ def getPageUrl(url):
         urlList.append(pageUrlPrefix + '_' + str(i) + '.' + suffix)
 #    print(urlList)
     return urlList
-
+#从壁纸页读取壁纸的url
 def getPhotoUrl(pageUrlList):
     photoUrlList = []
     for pageUrl in pageUrlList:
@@ -30,7 +30,7 @@ def getPhotoUrl(pageUrlList):
         photoUrlList.append(photoUrl)
 #    print(photoUrlList)
     return photoUrlList
-
+#下载壁纸到当前目录并从1开始编号
 def DownloadPhoto(photoUrlList):
     filelist = glob.glob('*.jpg')
     if len(filelist) == 0:
