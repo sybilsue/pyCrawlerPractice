@@ -51,7 +51,7 @@ if '2018' in years:
 
 ```python
 pn = 0
-base = 'http://xueshu.baidu.com/s?wd="颠覆性技术"&pn='
+base = 'http://xueshu.baidu.com/s?wd="软件网络"&pn='
 sufix = '&tn=SE_baiduxueshu_c1gjeupa&ie=utf-8&filter=sc_year%3D%7B2000%2C2019%7D&sc_f_para=sc_tasktype%3D%7BfirstAdvancedSearch%7D&sc_hit=1'
 for i in range(1,41):
 ```
