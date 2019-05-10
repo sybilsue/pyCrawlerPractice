@@ -44,7 +44,7 @@ class Crawler:
             if self.sleep:
                 time.sleep(random.randint(1,3))
     
-    def getInformation(self, baseblock: '.sc_content', *args):
+    def getInformation(self, baseblock: '.sc_content', *args: {'selectword': 'h3', 'content': 'text', 'name': 'title'},):
         result = []
         if not self.connetionState:
             raise NameError('connection must be made first')
@@ -75,7 +75,7 @@ class Crawler:
             result.append(resultDict)
         return result
 
-    def testGetInformation(self, baseblock: '.sc_content', *args: ({'selectword': 'h3', 'content': 'text', 'name': 'title'},)):
+    def testGetInformation(self, baseblock: '.sc_content', *args: {'selectword': 'h3', 'content': 'text', 'name': 'title'},):
         if not self.connetionState:
             raise NameError('connection must be made first')
         block = self.soup.select_one(baseblock)
@@ -148,16 +148,16 @@ class Crawler:
             
             
 if __name__ == "__main__":
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
-        }
-    url = 'https://www.baidu.com/'
+#    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+#        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+#        }
+#    url = 'https://www.baidu.com/'
     cr = Crawler()
-    cr.setHeaders(headers)
-    cr.setUrl(url)
-    cr.getConnet(sleep = True)
+#    cr.setHeaders(headers)
+#    cr.setUrl(url)
+#    cr.getConnet(sleep = True)
 #    print(cr.headers)
-#    cr.getConnet(url = 'http://xueshu.baidu.com/s?wd=%22%E9%A2%A0%E8%A6%86%E6%80%A7%E6%8A%80%E6%9C%AF%22&pn=0&tn=SE_baiduxueshu_c1gjeupa&ie=utf-8&filter=sc_year%3D%7B2000%2C2019%7D&sc_f_para=sc_tasktype%3D%7BfirstAdvancedSearch%7D&sc_hit=1')
+    cr.getConnet(url = 'http://xueshu.baidu.com/s?wd=%22%E9%A2%A0%E8%A6%86%E6%80%A7%E6%8A%80%E6%9C%AF%22&pn=0&tn=SE_baiduxueshu_c1gjeupa&ie=utf-8&filter=sc_year%3D%7B2000%2C2019%7D&sc_f_para=sc_tasktype%3D%7BfirstAdvancedSearch%7D&sc_hit=1')
 #    a = {'keyword': 'a', 'content': 'href', 'name': 'link'}, {'keyword': 'b', 'content': 'text', 'name': 'highlight'}
-#    result = cr.getInformation('.sc_content', {'selectword': 'h3', 'content': 'text', 'name': 'title'}, {'selectword': '.sc_info', 'content': 'text', 'name': 'info'})
-#    print(result)
+    result = cr.getInformation('.sc_content', {'selectword': 'h3', 'content': 'text', 'name': 'title'}, {'selectword': '.sc_info', 'content': 'text', 'name': 'info'})
+    print(result)
