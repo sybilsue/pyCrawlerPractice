@@ -157,7 +157,7 @@ if __name__ == "__main__":
 #    cr.setUrl(url)
 #    cr.getConnet(sleep = True)
 #    print(cr.headers)
-    cr.getConnet(url = 'http://xueshu.baidu.com/s?wd=%22%E9%A2%A0%E8%A6%86%E6%80%A7%E6%8A%80%E6%9C%AF%22&pn=0&tn=SE_baiduxueshu_c1gjeupa&ie=utf-8&filter=sc_year%3D%7B2000%2C2019%7D&sc_f_para=sc_tasktype%3D%7BfirstAdvancedSearch%7D&sc_hit=1')
+    cr.getConnet(url = 'http://xueshu.baidu.com/s?wd="软件网络"&pn=0&tn=SE_baiduxueshu_c1gjeupa&ie=utf-8&filter=sc_year%3D%7B2000%2C2019%7D&sc_f_para=sc_tasktype%3D%7BfirstAdvancedSearch%7D&sc_hit=1')
 #    a = {'keyword': 'a', 'content': 'href', 'name': 'link'}, {'keyword': 'b', 'content': 'text', 'name': 'highlight'}
     result = cr.getInformation('.sc_content', {'selectword': 'h3', 'content': 'text', 'name': 'title'}, {'selectword': '.sc_info', 'content': 'text', 'name': 'info'})
     print(result)
