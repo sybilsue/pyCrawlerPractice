@@ -5,7 +5,8 @@ import time
 import random
 
 class Crawler:
-    def __init__(self, url = None, headers = None, proxies = None, timeout = None):
+    defaultheaders = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36'}
+    def __init__(self, url = None, headers = defaultheaders, proxies = None, timeout = None):
         self.url = url
         self.headers = headers
         self.proxies = proxies
