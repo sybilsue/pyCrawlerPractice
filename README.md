@@ -92,7 +92,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/5
 #         'Referer': 'https://www.google.com/',
 #         "X-Client-Data": "CIi2yQEIprbJAQjEtskBCKmdygEIqKPKAQixp8oBCOKoygEI8KnKAQi5rMoB"
           }
-#响应头，为一个字典，主要用于将来自python的请求伪装为chrome浏览器
+#响应头，为一个字典，主要用于将来自python的请求伪装为浏览器，默认为chrome
 proxies = {
   "http":"http://127.0.0.1:1080",
   "https":"https://127.0.0.1:1080"
