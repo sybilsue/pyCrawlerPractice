@@ -6,7 +6,7 @@ import random
 
 class Crawler:
     defaultheaders = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36'}
-    def __init__(self, url = None, headers = defaultheaders, proxies = None, timeout = None):
+    def __init__(self, url = None, params = None, headers = defaultheaders, proxies = None, timeout = None):
         self.url = url
         self.headers = headers
         self.proxies = proxies
@@ -14,7 +14,7 @@ class Crawler:
         self.connetionState = False
         self.sleep = False
     
-    def getConnet(self, url = None, headers = None, proxies = None, timeout = None, sleep = False):
+    def getConnet(self, url = None, params = None, headers = None, proxies = None, timeout = None, sleep = False):
         if (url is None and self.url is None):
             raise NameError("No url information!")
         elif url:
@@ -29,8 +29,10 @@ class Crawler:
             self.timeout = timeout
         if sleep:
             self.sleep = sleep
+        if params:
+            self.params = params
         try:
-            response = requests.get(self.url, headers= self.headers, proxies = self.proxies, timeout = self.timeout)
+            response = requests.get(self.url, params = self.params, headers= self.headers, proxies = self.proxies, timeout = self.timeout)
 #            print(self.url, self.headers, self.proxies, self.timeout, self.sleep)
         except Exception as reason:
             print(str(reason))
@@ -121,6 +123,8 @@ class Crawler:
         return self.soup
     def getSleep(self):
         return self.sleep
+    def getParams(self):
+        return self.params
     
     def setUrl(self,url):
         self.url = url
@@ -132,6 +136,8 @@ class Crawler:
         self.timeout = timeout
     def setSleep(self,sleep):
         self.sleep = sleep
+    def setParams(self, params):
+        self.params = params
 
     def printExample(self,arg):
         print("example1: 'a'#label")
