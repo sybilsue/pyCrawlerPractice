@@ -71,7 +71,7 @@ for i in range(1,41):
 
 ```python
 import netCrawler
-cr = netCrawler.Crawler(url = None, headers = None, proxies = None, timeout = None)
+cr = netCrawler.Crawler(url = None, params = None, headers = None, proxies = None, timeout = None)
 ```
 
 调用该类，可以选择在调用时就传入参数，或者不传入，后续通过set方法传入参数。<br />
@@ -79,7 +79,7 @@ cr = netCrawler.Crawler(url = None, headers = None, proxies = None, timeout = No
 
 
 ```python
-cr.getConnet(self, url = None, headers = None, proxies = None, timeout = None, sleep = False)
+cr.getConnet(self, url = None, params = None, headers = None, proxies = None, timeout = None, sleep = False)
 ```
 
 获取服务器的响应，此时应该确保url参数已经设定，参数示例：
@@ -87,6 +87,11 @@ cr.getConnet(self, url = None, headers = None, proxies = None, timeout = None, s
 
 ```python
 url = 'https://patents.google.com/patent'
+params = {'wd': "软件网络",
+        'pn': '0',
+        'tn': 'SE_baiduxueshu_c1gjeupa',
+        'ie': 'utf-8'}
+#参数，会以key=value的形式自动衔接在url后，参数间以&分割，与url以?链接
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
 #         'Referer': 'https://www.google.com/',
