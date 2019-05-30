@@ -62,7 +62,8 @@ for i in range(1,41):
 
 从谷歌专利的专利细览页面下载中文专利的专利名称，公开号，摘要，发明人，申请人信息<br />
 在代码同路下创建<code>pubNums.txt</code>文件存放专利号，要求每行仅存放一个专利号<br />
-下载结果存放在<code>result.txt</code>中。<b>仅只用于中文专利</b>
+下载结果存放在<code>result.txt</code>中。<b>仅用于中文专利！！</b><br />
+(理论上在<code>url = '/'.join([baseUrl, i.strip(), suffixUrl])</code>中把<code>suffixUrl</code>去掉就可以应用于全语言专利，但是在写入的时候记得在<code>with open('result.txt','a') as f2:</code>的参数中加入<code>encoding = 'utf-8'</code>以避免无法写入GBK之外的字符，未测试，只是理论可行。)
 
 ### netCrawler.py
 
