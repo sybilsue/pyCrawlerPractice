@@ -1,7 +1,7 @@
 
 ### downloadPhotoFromwin4000.py
 
-从<a href = "http://www.win4000.com/">美桌网</a>下载指定壁纸集的壁纸，壁纸将按照数字顺序存放在同文件夹中。<br />
+从<a href = "http://www.win4000.com/">美桌网</a>下载指定壁纸集的壁纸，壁纸将按照数字顺序存放在同文件夹中。  
 通过修改：
 
 
@@ -10,10 +10,11 @@ url = 'http://www.win4000.com/wallpaper_detail_155712.html'
 ```
 
 切换下载地址，要求该url为壁纸集的第一张壁纸。
+___
 
 ### getWallpaperFrom5857.py
 
-从<a href = "http://www.5857.com/">5857壁纸站</a>下载指定壁纸集的壁纸，壁纸将按照数字顺序存放在同文件夹中。<br />
+从<a href = "http://www.5857.com/">5857壁纸站</a>下载指定壁纸集的壁纸，壁纸将按照数字顺序存放在同文件夹中。  
 通过修改：
 
 
@@ -25,7 +26,7 @@ url = 'http://www.win4000.com/wallpaper_detail_155712.html'
 
 ### getArticleNumFromOA.py
 
-从<a href = "https://academic.oup.com/journals">oxford academic</a>旗下各期刊门户网站统计某期刊某一年的所有卷 期 文章数。<br />
+从<a href = "https://academic.oup.com/journals">oxford academic</a>旗下各期刊门户网站统计某期刊某一年的所有卷 期 文章数。  
 通过修改：
 
 
@@ -33,7 +34,7 @@ url = 'http://www.win4000.com/wallpaper_detail_155712.html'
  url = 'https://academic.oup.com/abbs/issue-archive'
 ```
 
-修改所统计的期刊，要求该url为期刊的issue-archive页。<br />
+修改所统计的期刊，要求该url为期刊的issue-archive页。  
 通过修改：
 
 
@@ -42,10 +43,11 @@ if '2018' in years:
 ```
 
 修改年份，要求年份为字符串
+___
 
 ### getArticleFromBaiduxueshu.py
 
-从百度学术搜索结果页获取文章的题目，摘要，作者和来源，并且在同目录下生成excal文档<br />
+从百度学术搜索结果页获取文章的题目，摘要，作者和来源，并且在同目录下生成excal文档
 通过修改：
 
 
@@ -56,14 +58,17 @@ sufix = '&tn=SE_baiduxueshu_c1gjeupa&ie=utf-8&filter=sc_year%3D%7B2000%2C2019%7D
 for i in range(1,41):
 ```
 
-来分别修改起始页码，url中页码前的部分和url，中页码后的部分以及结果的页码数。要求url为搜索结果页
+来分别修改起始页码，url中页码前的部分和url中页码后的部分以及结果的页码数。要求url为搜索结果页
+___
 
 ### getFromGooglePatently.py
 
-从谷歌专利的专利细览页面下载中文专利的专利名称，公开号，摘要，发明人，申请人信息<br />
-在代码同路下创建<code>pubNums.txt</code>文件存放专利号，要求每行仅存放一个专利号<br />
-下载结果存放在<code>result.txt</code>中。<b>仅用于中文专利！！</b><br />
-(理论上在<code>url = '/'.join([baseUrl, i.strip(), suffixUrl])</code>中把<code>suffixUrl</code>去掉就可以应用于全语言专利，但是在写入的时候记得在<code>with open('result.txt','a') as f2:</code>的参数中加入<code>encoding = 'utf-8'</code>以避免无法写入GBK之外的字符，未测试，只是理论可行。)
+从谷歌专利的专利细览页面下载中文专利的专利名称，公开号，摘要，发明人，申请人信息  
+在代码同路下创建<code>pubNums.txt</code>文件存放专利号，要求每行仅存放一个专利号  
+下载结果存放在<code>result.txt</code>中。__仅用于中文专利！！__  
+(理论上在<code>url = '/'.join([baseUrl, i.strip(), suffixUrl])</code>中把<code>suffixUrl</code>去掉就可以应用于全语言专利  
+但是在写入的时候记得在<code>with open('result.txt','a') as f2:</code>的参数中加入<code>encoding = 'utf-8'</code>以避免无法写入GBK之外的字符，未测试，只是理论可行。)
+___
 
 ### netCrawler.py
 
@@ -75,12 +80,12 @@ import netCrawler
 cr = netCrawler.Crawler(url = None, params = None, headers = None, proxies = None, timeout = None)
 ```
 
-调用该类，可以选择在调用时就传入参数，或者不传入，后续通过set方法传入参数。<br />
+调用该类，可以选择在调用时就传入参数，或者不传入，后续通过set方法传入参数。  
 调用后通过：
 
 
 ```python
-cr.getConnet(self, url = None, params = None, headers = None, proxies = None, timeout = None, sleep = False)
+cr.getConnet(url = None, params = None, headers = None, proxies = None, timeout = None, sleep = False)
 ```
 
 获取服务器的响应，此时应该确保url参数已经设定，参数示例：
@@ -115,15 +120,15 @@ sleep = True
 
 
 ```python
-cr.getInformation(self, baseblock: '.sc_content', *args: {'selectword': 'h3', 'content': 'text', 'name': 'title'},)
+cr.getInformation(baseblock: '.sc_content', *args: {'selectword': 'h3', 'content': 'text', 'name': 'title'},)
 ```
 
-获取页面信息，返回结果为list，其中：<br />
-<b>baseblock</b>: 字符串，用于定位存放一个完整词条的基本容器，会根据基本容器循环获取页面内每一个容器中的相似内容<br />
-<b>&#42;args</b>: 一或多个形如<code>{'selectword': 'h3', 'content': 'text', 'name': 'title'}</code>的字典，用于定位每一个基本容器中需要被获取的内容，多个字典用逗号分隔。<br />
-<b>selectword</b>: 一般为标签，类或者id，用于定位获取元素。<br />
-<b>content</b>: 获取该元素的哪个属性，比如说&lt;a&gt;的href或者text部分<br />,如果selectword在block中不唯一，则会直接返回<code>soup.select(selectword)</code>的结果，此时<b>content</b>无效<br />
-<b>name</b>: 返回结果中对该元素的命名
+获取页面信息，返回结果为list，其中：  
+__baseblock__: 字符串，用于定位存放一个完整词条的基本容器，会根据基本容器循环获取页面内每一个容器中的相似内容  
+__&#42;args__: 一或多个形如<code>{'selectword': 'h3', 'content': 'text', 'name': 'title'}</code>的字典，用于定位每一个基本容器中需要被获取的内容，多个字典用逗号分隔。  
+__selectword__: 一般为标签，类或者id，用于定位获取元素。  
+__content__: 获取该元素的哪个属性，比如说<code>&lt;a&gt;</code>的<code>href</code>或者<code>text</code>部分,如果**selectword**在block中不唯一，则会直接返回<code>soup.select(selectword)</code>的结果，此时**content**无效  
+__name__: 返回结果中对该元素的命名
 
 <b>selectword</b>和<b>baseblock</b>都需要按照<code>beautifulsoup</code>包中<code>select()</code>函数所要求的格式输入，可以通过<code>printExample()</code>函数获取样例：
 
@@ -148,6 +153,7 @@ result
 
     <Response [200]>
     
+
     [{'title': '基于软件网络的服务自动分类和推荐方法研究',
       'abstract': '服务的分类和推荐方法对于服务 管理和组合都具有重要意义.文中利用服务组合历史,从面向服务软件的结构角度研究了服务分类和推荐方法:提出面向服务软件的软件网络模...'},
      {'title': '软件网络的多粒度拓扑特性分析及其应用',
@@ -170,6 +176,8 @@ result
       'abstract': '寿步. 软件网络和知识产权--从实务到理论[M].长春:吉林人民出版社,2001.寿步.软件网络和知识产权--从实务到理论[M].长春:吉林人民出版社,2001.寿步. 软件网络和知识产权--从实务到理论[M].长春:吉林人民出版社 2001...'}]
 
 
+
+___
 
 
 ```python
