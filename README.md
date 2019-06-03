@@ -1,13 +1,14 @@
 
 ## 目录
-* [从美桌网下载壁纸](#downloadPhotoFromwin4000.py)
-* [从5857下载壁纸](#getWallpaperFrom5857.py)
-* [从oxford academic获取特定期间某年每一卷期文章数](#getArticleNumFromOA.py)
-* [从百度学术检索结果获取文章标题，摘要，作者，来源](#getArticleFromBaiduxueshu.py)
-* [谷歌专利获取中文专利名称，公开号，摘要，发明人，申请人](#getFromGooglePatently.py)
-* [一个通用检索结果爬虫类](#netCrawler.py)
+* [从美桌网下载壁纸](#从美桌网下载壁纸)
+* [从5857下载壁纸](#从5857下载壁纸)
+* [从oxford academic获取特定期间某年每一卷期文章数](#从oxford academic获取特定期间某年每一卷期文章数)
+* [从百度学术检索结果获取文章标题，摘要，作者，来源](#从百度学术检索结果获取文章标题，摘要，作者，来源)
+* [谷歌专利获取中文专利名称，公开号，摘要，发明人，申请人](#谷歌专利获取中文专利名称，公开号，摘要，发明人，申请人)
+* [一个通用检索结果爬虫类](#一个通用检索结果爬虫类)
 
-### downloadPhotoFromwin4000.py
+### 从美桌网下载壁纸
+downloadPhotoFromwin4000.py  
 
 从[美桌网](http://www.win4000.com/)下载指定壁纸集的壁纸，壁纸将按照数字顺序存放在同文件夹中。  
 通过修改：
@@ -20,7 +21,8 @@ url = 'http://www.win4000.com/wallpaper_detail_155712.html'
 切换下载地址，要求该url为壁纸集的第一张壁纸。
 ___
 
-### getWallpaperFrom5857.py
+### 从5857下载壁纸
+getWallpaperFrom5857.py  
 
 从[5857壁纸站](http://www.5857.com/)下载指定壁纸集的壁纸，壁纸将按照数字顺序存放在同文件夹中。  
 通过修改：
@@ -32,7 +34,8 @@ ___
 
 切换下载地址，要求该url为壁纸集的第一张壁纸。
 
-### getArticleNumFromOA.py
+### 从oxford academic获取特定期间某年每一卷期文章数
+getArticleNumFromOA.py  
 
 从[oxford academic](https://academic.oup.com/journals)旗下各期刊门户网站统计某期刊某一年的所有卷 期 文章数。  
 通过修改：
@@ -53,7 +56,8 @@ if '2018' in years:
 修改年份，要求年份为字符串
 ___
 
-### getArticleFromBaiduxueshu.py
+### 从百度学术检索结果获取文章标题，摘要，作者，来源
+getArticleFromBaiduxueshu.py
 
 从百度学术搜索结果页获取文章的题目，摘要，作者和来源，并且在同目录下生成excal文档  
 通过修改：
@@ -69,7 +73,8 @@ for i in range(1,41):
 来分别修改起始页码，url中页码前的部分和url中页码后的部分以及结果的页码数,要求url为搜索结果页.
 ___
 
-### getFromGooglePatently.py
+### 谷歌专利获取中文专利名称，公开号，摘要，发明人，申请人
+getFromGooglePatently.py
 
 从谷歌专利的专利细览页面下载中文专利的专利名称，公开号，摘要，发明人，申请人信息  
 在代码同路下创建`pubNums.txt`文件存放专利号，要求每行仅存放一个专利号  
@@ -77,7 +82,8 @@ ___
 (理论上在`url = '/'.join([baseUrl, i.strip(), suffixUrl])`中把`suffixUrl`去掉就可以应用于全语言专利  但是在写入的时候记得在`with open('result.txt','a') as f2:`的参数中加入`encoding = 'utf-8'`以避免无法写入GBK之外的字符，未测试，只是理论可行。)
 ___
 
-### netCrawler.py
+### 一个通用检索结果爬虫类
+netCrawler.py
 
 尝试着写了一个主要针对搜索结果的爬虫类，适用于代码比较规范的搜索引擎，通过：
 
