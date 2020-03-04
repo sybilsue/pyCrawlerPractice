@@ -18,7 +18,9 @@ downloadPhotoFromwin4000.py
 url = 'http://www.win4000.com/wallpaper_detail_155712.html'
 ```
 
-切换下载地址，要求该url为壁纸集的第一张壁纸。
+切换下载地址，要求该url为壁纸集的第一张壁纸。  
+使用`downFromNetbian(netbianUrl)`可以从[彼岸网](http://www.netbian.com/rili/index.htm)下载壁纸，  
+`netbianUrl = "http://www.netbian.com/desk/22381.htm"`中的地址替换为浏览界面右键小图复制链接。  
 ___
 
 ### 从5857下载壁纸
