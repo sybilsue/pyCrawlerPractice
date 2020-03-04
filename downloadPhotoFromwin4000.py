@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import re
 import glob
 
-#解析url炖成soup，获取一个专辑下的所有壁纸页
+#解析url炖成soup
 def getPageUrl(url):
 #    url = 'http://172.16.14.69:8080/dbsearchplat/magazineList.action'
     html = requests.get(url).text
@@ -19,18 +19,18 @@ def getPageUrl(url):
         urlList.append(pageUrlPrefix + '_' + str(i) + '.' + suffix)
 #    print(urlList)
     return urlList
-#从壁纸页读取壁纸的url
+
 def getPhotoUrl(pageUrlList):
     photoUrlList = []
     for pageUrl in pageUrlList:
         html = requests.get(pageUrl).text
         soup = BeautifulSoup(html,'html.parser')
-        photoUrl = soup.find(class_ = 'paper-down').find('a')['href']
+        photoUrl = soup.find(class_ = 'pic-large')["src"]
 #        print(photoUrl)
         photoUrlList.append(photoUrl)
 #    print(photoUrlList)
     return photoUrlList
-#下载壁纸到当前目录并从1开始编号
+
 def DownloadPhoto(photoUrlList):
     filelist = glob.glob('*.jpg')
     if len(filelist) == 0:
@@ -56,8 +56,26 @@ def DownloadPhoto(photoUrlList):
             else:
                 print(r.status_code)
 
-if __name__ == '__main__':
-    url = 'http://www.win4000.com/wallpaper_detail_155712.html'
+def downloadFromWin4000(url):
     pageUrlList = getPageUrl(url)
     photoUrlList = getPhotoUrl(pageUrlList)
     DownloadPhoto(photoUrlList)
+
+def downFromNetbian(url):
+    url = (".").join(url.split(".")[:-1]) + "-1920x1080.htm"
+    soup = getConnect(url)
+    photoUrl = soup.find_all("img")
+    photoUrlList = []
+    photoUrlList.append(photoUrl[-1]["src"])
+    DownloadPhoto(photoUrlList)
+    
+def getConnect(url):
+    html = requests.get(url).text
+    soup = BeautifulSoup(html,'html.parser')
+    return soup
+if __name__ == '__main__':
+    win4000Url = 'http://www.win4000.com/wallpaper_detail_165834.html'
+    # netbianUrl = "http://www.netbian.com/desk/22381.htm"
+#    downFromNetbian(netbianUrl)
+    downloadFromWin4000(win4000Url)
+
